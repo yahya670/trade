@@ -32,7 +32,7 @@
     <!-- Google Fonts Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -88,7 +88,7 @@
                     <h1 class="text-lg font-extrabold bg-gradient-to-r from-blue-400 via-emerald-400 to-teal-200 bg-clip-text text-transparent">
                         تحدي الـ 50 صفقة والتداول الحلال
                     </h1>
-                    <p class="text-xs text-slate-400 font-medium">50-Trade Challenge &amp; Halal Hub</p>
+                    <p class="text-xs text-slate-400 font-medium">50-Trade Challenge & Halal Hub</p>
                 </div>
             </div>
 
@@ -139,13 +139,13 @@
                         <p class="text-xs text-slate-400 mt-1">الهدف هو الالتزام بـ 50 صفقة مدروسة بإدارة مخاطر صارمة.</p>
                     </div>
                     <div class="text-right">
-                        <span id="dash-trade-count" class="text-2xl font-black text-blue-400">2</span>
+                        <span id="dash-trade-count" class="text-2xl font-black text-blue-400">0</span>
                         <span class="text-slate-400 font-bold"> / 50 صفقة</span>
-                        <div id="dash-progress-percent" class="text-xs text-emerald-400 font-semibold">4% مكتمل</div>
+                        <div id="dash-progress-percent" class="text-xs text-emerald-400 font-semibold">0% مكتمل</div>
                     </div>
                 </div>
                 <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden p-0.5 border border-slate-700/50">
-                    <div id="dash-progress-bar" class="bg-gradient-to-r from-blue-500 via-emerald-400 to-teal-400 h-2 rounded-full transition-all duration-500" style="width: 4%;"></div>
+                    <div id="dash-progress-bar" class="bg-gradient-to-r from-blue-500 via-emerald-400 to-teal-400 h-2 rounded-full transition-all duration-500" style="width: 0%;"></div>
                 </div>
             </div>
 
@@ -155,8 +155,8 @@
                         <span class="text-xs font-bold">الرصيد الحالي</span>
                         <i class="fa-solid fa-wallet text-blue-400"></i>
                     </div>
-                    <div id="dash-balance" class="text-2xl font-black text-white">$1,000.27</div>
-                    <div id="dash-balance-change" class="text-xs font-bold mt-1 flex items-center gap-1 text-emerald-400"><i class="fa-solid fa-arrow-trend-up"></i> +$0.27 (+0.03%)</div>
+                    <div id="dash-balance" class="text-2xl font-black text-white">$1,000.00</div>
+                    <div id="dash-balance-change" class="text-xs font-bold mt-1 flex items-center gap-1 text-emerald-400"><i class="fa-solid fa-arrow-trend-up"></i> +$0.00 (+0.00%)</div>
                 </div>
 
                 <div class="glass-card p-5 rounded-2xl border border-cardborder relative">
@@ -164,16 +164,16 @@
                         <span class="text-xs font-bold">نسبة النجاح (Win Rate)</span>
                         <i class="fa-solid fa-trophy text-amber-400"></i>
                     </div>
-                    <div id="dash-winrate" class="text-2xl font-black text-amber-400">50%</div>
-                    <div id="dash-win-loss-count" class="text-xs text-slate-400 font-medium mt-1">1 رابحة / 1 خاسرة</div>
+                    <div id="dash-winrate" class="text-2xl font-black text-amber-400">0%</div>
+                    <div id="dash-win-loss-count" class="text-xs text-slate-400 font-medium mt-1">0 رابحة / 0 خاسرة</div>
                 </div>
 
                 <div class="glass-card p-5 rounded-2xl border border-cardborder relative">
                     <div class="flex items-center justify-between text-slate-400 mb-2">
-                        <span class="text-xs font-bold">صافي الأرباح (P&amp;L)</span>
+                        <span class="text-xs font-bold">صافي الأرباح (P&L)</span>
                         <i class="fa-solid fa-chart-line text-emerald-400"></i>
                     </div>
-                    <div id="dash-pnl" class="text-2xl font-black text-emerald-400">+$0.27</div>
+                    <div id="dash-pnl" class="text-2xl font-black text-emerald-400">+$0.00</div>
                     <div class="text-xs text-slate-400 font-medium mt-1">من الصفقات المكتملة</div>
                 </div>
 
@@ -210,7 +210,6 @@
                             </tr>
                         </thead>
                         <tbody id="dash-trades-tbody" class="divide-y divide-cardborder">
-                            <!-- Populated dynamically via JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -238,7 +237,7 @@
                 <form id="zoya-search-form" onsubmit="handleZoyaSearch(event)" class="flex flex-col sm:flex-row gap-3">
                     <div class="relative flex-1">
                         <i class="fa-solid fa-magnifying-glass absolute right-4 top-3.5 text-slate-400"></i>
-                        <input type="text" id="zoya-ticker-input" placeholder="أدخل أي رمز (مثال: AAPL, NVDA, GOOGL)..." required class="w-full bg-slate-900 border border-slate-700 rounded-xl pr-11 pl-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-bold uppercase tracking-wider">
+                        <input type="text" id="zoya-ticker-input" placeholder="أدخل أي رمز (مثال: AAPL, NVDA, GOOGL)..." required="" class="w-full bg-slate-900 border border-slate-700 rounded-xl pr-11 pl-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-bold uppercase tracking-wider">
                     </div>
                     <button type="submit" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30">
                         <i class="fa-solid fa-shield-halal"></i> فحص السهم
@@ -337,11 +336,11 @@
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="font-extrabold text-base text-white flex items-center gap-2">
                             <i class="fa-solid fa-chart-candlestick text-emerald-400"></i>
-                            الشارت الحي المباشر (يعمل الآن بثبات)
+                            الشارت الحي المباشر
                         </h3>
                         <span id="chart-symbol-badge" class="px-2.5 py-1 rounded bg-slate-800 text-xs font-extrabold text-emerald-400">NASDAQ:AAPL</span>
                     </div>
-                    <!-- TradingView Widget Container -->
+                    <!-- TradingView Widget -->
                     <div id="tradingview_widget_container" class="w-full flex-1 rounded-xl overflow-hidden border border-slate-800"></div>
                 </div>
             </div>
@@ -386,7 +385,6 @@
                             </tr>
                         </thead>
                         <tbody id="journal-trades-tbody" class="divide-y divide-cardborder">
-                            <!-- Populated dynamically via JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -396,11 +394,25 @@
         <!-- TAB 5: SETTINGS -->
         <section id="view-settings" class="hidden space-y-6">
             <div class="glass-card p-6 rounded-2xl border border-cardborder max-w-2xl mx-auto space-y-6">
-                <h2 class="text-xl font-extrabold text-white border-b border-cardborder pb-3">الإعدادات</h2>
+                <h2 class="text-xl font-extrabold text-white border-b border-cardborder pb-3">الإعدادات وإدارة البيانات</h2>
                 <div class="space-y-2">
                     <label class="block text-sm font-bold text-slate-300">رأس المال الابتدائي ($)</label>
                     <input type="number" id="setting-init-balance" value="1000.00" step="any" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-bold text-white focus:outline-none">
                 </div>
+                
+                <div class="pt-4 border-t border-cardborder space-y-3">
+                    <h3 class="text-sm font-bold text-slate-200">النسخ الاحتياطي والاسترجاع</h3>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button onclick="exportJSONBackup()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl text-xs border border-slate-700 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-download"></i> تصدير نسخة احتياطية (JSON)
+                        </button>
+                        <label class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl text-xs border border-slate-700 transition flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="fa-solid fa-upload"></i> استرجاع نسخة احتياطية
+                            <input type="file" accept=".json" onchange="importJSONBackup(event)" class="hidden">
+                        </label>
+                    </div>
+                </div>
+
                 <div class="pt-4 flex flex-col sm:flex-row gap-3">
                     <button onclick="saveSettings()" class="flex-1 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition">
                         حفظ الإعدادات
@@ -426,7 +438,7 @@
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-300 mb-1">الرمز</label>
-                        <input type="text" id="m-ticker" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white uppercase font-bold">
+                        <input type="text" id="m-ticker" required="" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white uppercase font-bold">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-300 mb-1">نوع الصفقة</label>
@@ -439,7 +451,7 @@
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-300 mb-1">الدخول ($)</label>
-                        <input type="number" id="m-entry" required step="any" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white font-bold">
+                        <input type="number" id="m-entry" required="" step="any" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white font-bold">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-300 mb-1">الخروج ($)</label>
@@ -449,7 +461,7 @@
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-300 mb-1">الكمية</label>
-                        <input type="number" id="m-quantity" required step="any" value="1" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white font-bold">
+                        <input type="number" id="m-quantity" required="" step="any" value="1" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white font-bold">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-300 mb-1">النتيجة</label>
@@ -481,44 +493,11 @@
         </div>
     </div>
 
-    <!-- Toast Container -->
+    <!-- Toast -->
     <div id="toast-container" class="fixed bottom-5 left-5 z-50 space-y-2 pointer-events-none"></div>
 
     <script>
         const DEFAULT_INITIAL_BALANCE = 1000.00;
-        
-        // الصفقات الأوّلية المسبقة للحفاظ على البيانات المدخلة في الجداول
-        const INITIAL_DEFAULT_TRADES = [
-            {
-                id: 1,
-                ticker: "SOLUSDT",
-                type: "SPOT",
-                entryPrice: 122.3,
-                exitPrice: 123.07,
-                quantity: 1,
-                pnl: 0.77,
-                status: "WIN",
-                halalStatus: "COMPLIANT",
-                purificationRate: 0.0,
-                purificationAmount: 0.0,
-                date: "2026-09-28"
-            },
-            {
-                id: 2,
-                ticker: "WLDUSDT",
-                type: "SPOT",
-                entryPrice: 0.57,
-                exitPrice: 0.565,
-                quantity: 100,
-                pnl: -0.50,
-                status: "LOSS",
-                halalStatus: "COMPLIANT",
-                purificationRate: 0.0,
-                purificationAmount: 0.0,
-                date: "2026-09-28"
-            }
-        ];
-
         let state = {
             trades: [],
             initialBalance: DEFAULT_INITIAL_BALANCE,
@@ -576,12 +555,20 @@
         }
 
         function updateChartSymbol(symbol) {
-            const formattedSymbol = symbol.includes(':') ? symbol : `NASDAQ:${symbol}`;
+            let cleanSymbol = symbol.trim().toUpperCase();
+            let formattedSymbol = cleanSymbol;
+            if (!cleanSymbol.includes(':')) {
+                if (cleanSymbol.endsWith('USDT') || cleanSymbol.endsWith('BTC') || cleanSymbol.endsWith('ETH')) {
+                    formattedSymbol = `BINANCE:${cleanSymbol}`;
+                } else {
+                    formattedSymbol = `NASDAQ:${cleanSymbol}`;
+                }
+            }
             document.getElementById('chart-symbol-badge').innerText = formattedSymbol;
             initTradingViewWidget(formattedSymbol);
         }
 
-        // ---------- Zoya Halal Logic ----------
+        // ---------- Zoya Logic ----------
         function handleZoyaSearch(e) {
             if (e) e.preventDefault();
             
@@ -611,7 +598,7 @@
                     };
                 }
 
-                data.name = `${ticker} Company`;
+                data.name = `${ticker} Corporation`;
                 data.summary = data.compliance === 'NON_COMPLIANT' 
                     ? "يتعارض هذا السهم مع الضوابط الشرعية بسبب نسب الديون أو الإيرادات المحرمة."
                     : "تم فحص الرمز بناءً على المؤشرات الحالية وهو متوافق مع الضوابط الشرعية.";
@@ -689,17 +676,13 @@
             showToast(`تم فتح شارت وحاسبة ${ticker}`, 'success');
         }
 
-        // ---------- State & Persistence Logic ----------
+        // ---------- State & Logic ----------
         function loadState() {
             const savedTrades = localStorage.getItem('hub_trades');
             const savedBalance = localStorage.getItem('hub_balance');
-            
-            // حفظ وتحميل الصفقات الأولية دون مسحها
-            state.trades = savedTrades ? JSON.parse(savedTrades) : INITIAL_DEFAULT_TRADES;
+            state.trades = savedTrades ? JSON.parse(savedTrades) : [];
             state.initialBalance = savedBalance ? parseFloat(savedBalance) : DEFAULT_INITIAL_BALANCE;
-            
             document.getElementById('setting-init-balance').value = state.initialBalance;
-            if (!savedTrades) saveState();
         }
 
         function saveState() {
@@ -751,7 +734,7 @@
             document.getElementById('dash-balance').innerText = `$${currentBalance.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
             
             const pnlSign = totalPnl >= 0 ? '+' : '';
-            const pnlPercent = ((totalPnl / state.initialBalance) * 100).toFixed(2);
+            const pnlPercent = state.initialBalance > 0 ? ((totalPnl / state.initialBalance) * 100).toFixed(2) : '0.00';
             document.getElementById('dash-balance-change').innerHTML = `<i class="fa-solid fa-arrow-trend-${totalPnl >= 0 ? 'up' : 'down'}"></i> ${pnlSign}$${totalPnl.toFixed(2)} (${pnlSign}${pnlPercent}%)`;
             document.getElementById('dash-balance-change').className = `text-xs font-bold mt-1 flex items-center gap-1 ${totalPnl >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
 
@@ -803,8 +786,8 @@
                     <td class="p-3 ${t.pnl >= 0 ? 'text-emerald-400' : 'text-rose-400'} font-bold">${t.pnl ? (t.pnl > 0 ? '+' : '') + '$' + t.pnl.toFixed(2) : '-'}</td>
                     <td class="p-3">${t.status === 'WIN' ? '🎯' : (t.status === 'LOSS' ? '🔻' : '⏳')}</td>
                     <td class="p-3 flex items-center gap-2">
-                        <button onclick="editTrade(${t.id})" class="text-blue-400 hover:text-blue-300" title="تعديل"><i class="fa-solid fa-pen"></i></button>
-                        <button onclick="deleteTrade(${t.id})" class="text-rose-400 hover:text-rose-300" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                        <button onclick="editTrade(${t.id})" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="deleteTrade(${t.id})" class="text-rose-400 hover:text-rose-300"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 `;
                 tbody.appendChild(tr);
@@ -813,8 +796,26 @@
 
         function openAddTradeModal() {
             document.getElementById('modal-trade-form').reset();
-            document.getElementById('m-editing-id').value = "";
-            document.getElementById('modal-title').innerText = "إضافة صفقة جديدة للسجل";
+            document.getElementById('m-editing-id').value = '';
+            document.getElementById('modal-title').innerText = 'إضافة صفقة جديدة للسجل';
+            document.getElementById('modal-trade').classList.remove('hidden');
+        }
+
+        function editTrade(id) {
+            const trade = state.trades.find(t => t.id === id);
+            if (!trade) return;
+
+            document.getElementById('m-editing-id').value = trade.id;
+            document.getElementById('m-ticker').value = trade.ticker;
+            document.getElementById('m-type').value = trade.type;
+            document.getElementById('m-entry').value = trade.entryPrice;
+            document.getElementById('m-exit').value = trade.exitPrice || '';
+            document.getElementById('m-quantity').value = trade.quantity;
+            document.getElementById('m-status').value = trade.status;
+            document.getElementById('m-halal').value = trade.halalStatus;
+            document.getElementById('m-purification-rate').value = trade.purificationRate || 0;
+            
+            document.getElementById('modal-title').innerText = `تعديل الصفقة #${trade.id}`;
             document.getElementById('modal-trade').classList.remove('hidden');
         }
 
@@ -822,27 +823,9 @@
             document.getElementById('modal-trade').classList.add('hidden');
         }
 
-        function editTrade(id) {
-            const t = state.trades.find(item => item.id === id);
-            if (!t) return;
-
-            document.getElementById('m-editing-id').value = t.id;
-            document.getElementById('m-ticker').value = t.ticker;
-            document.getElementById('m-type').value = t.type;
-            document.getElementById('m-entry').value = t.entryPrice;
-            document.getElementById('m-exit').value = t.exitPrice || "";
-            document.getElementById('m-quantity').value = t.quantity;
-            document.getElementById('m-status').value = t.status;
-            document.getElementById('m-halal').value = t.halalStatus;
-            document.getElementById('m-purification-rate').value = t.purificationRate || 0;
-
-            document.getElementById('modal-title').innerText = `تعديل الصفقة #${t.id}`;
-            document.getElementById('modal-trade').classList.remove('hidden');
-        }
-
         function saveTradeFromModal(e) {
             e.preventDefault();
-            const editId = document.getElementById('m-editing-id').value;
+            const editingId = document.getElementById('m-editing-id').value;
             const ticker = document.getElementById('m-ticker').value.toUpperCase();
             const entry = parseFloat(document.getElementById('m-entry').value);
             const exit = parseFloat(document.getElementById('m-exit').value) || null;
@@ -853,12 +836,11 @@
             let pnl = exit ? (exit - entry) * quantity : 0;
             let purAmount = (pnl > 0 && purRate > 0) ? pnl * (purRate / 100) : 0;
 
-            if (editId) {
-                // تعديل صفقة قائمة
-                const idx = state.trades.findIndex(t => t.id == editId);
-                if (idx !== -1) {
-                    state.trades[idx] = {
-                        ...state.trades[idx],
+            if (editingId) {
+                const index = state.trades.findIndex(t => t.id === parseInt(editingId));
+                if (index !== -1) {
+                    state.trades[index] = {
+                        ...state.trades[index],
                         ticker,
                         type: document.getElementById('m-type').value,
                         entryPrice: entry,
@@ -872,8 +854,7 @@
                     };
                 }
             } else {
-                // إضافة صفقة جديدة
-                const nextId = state.trades.length > 0 ? Math.max(...state.trades.map(t => t.id)) + 1 : 1;
+                const nextId = state.trades.length > 0 ? Math.max(...state.trades.map(t => t.id || 0)) + 1 : 1;
                 state.trades.push({
                     id: nextId,
                     ticker,
@@ -894,7 +875,7 @@
             renderDashboard();
             renderJournal();
             closeTradeModal();
-            showToast("تم حفظ البيانات بنجاح!", "success");
+            showToast(editingId ? "تم تحديث الصفقة!" : "تم التسجيل بنجاح!", "success");
         }
 
         function deleteTrade(id) {
@@ -905,40 +886,60 @@
             showToast("تم حذف الصفقة", "info");
         }
 
-        // ---------- Export CSV Function ----------
+        // ---------- Export CSV Logic ----------
         function exportTradesCSV() {
             if (!state.trades || state.trades.length === 0) {
-                showToast("لا توجد صفقات لتصديرها", "error");
+                showToast("لا توجد صفقات للتصدير", "error");
                 return;
             }
-
-            const headers = ["ID", "Ticker", "Type", "Entry Price", "Exit Price", "Quantity", "PnL", "Status", "Halal Status", "Purification Rate", "Purification Amount", "Date"];
+            const headers = ["ID", "Ticker", "Type", "Entry", "Exit", "Quantity", "PnL", "Status", "HalalStatus", "PurificationRate", "PurificationAmount", "Date"];
             const rows = state.trades.map(t => [
-                t.id,
-                t.ticker,
-                t.type,
-                t.entryPrice,
-                t.exitPrice || '',
-                t.quantity,
-                t.pnl ? t.pnl.toFixed(2) : '0.00',
-                t.status,
-                t.halalStatus,
-                t.purificationRate || 0,
-                t.purificationAmount ? t.purificationAmount.toFixed(2) : '0.00',
-                t.date || ''
+                t.id, t.ticker, t.type, t.entryPrice, t.exitPrice || '', t.quantity, (t.pnl || 0).toFixed(2), t.status, t.halalStatus, t.purificationRate || 0, (t.purificationAmount || 0).toFixed(2), t.date || ''
             ]);
-
-            let csvContent = "data:text/csv;charset=utf-8,\uFEFF" 
-                + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
-
-            const encodedUri = encodeURI(csvContent);
+            
+            const csvContent = "\uFEFF" + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `trades_journal_${new Date().toISOString().split('T')[0]}.csv`);
+            link.setAttribute("href", url);
+            link.setAttribute("download", `50_Trade_Journal_${new Date().toISOString().split('T')[0]}.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
             showToast("تم تصدير ملف CSV بنجاح!", "success");
+        }
+
+        // ---------- Backup / Restore Logic ----------
+        function exportJSONBackup() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `trade_hub_backup_${new Date().toISOString().split('T')[0]}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+            showToast("تم تصدير النسخة الاحتياطية بنجاح!", "success");
+        }
+
+        function importJSONBackup(event) {
+            const fileReader = new FileReader();
+            fileReader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (parsed && Array.isArray(parsed.trades)) {
+                        state = parsed;
+                        saveState();
+                        renderDashboard();
+                        renderJournal();
+                        showToast("تم استرجاع البيانات بنجاح!", "success");
+                    } else {
+                        showToast("ملف غير صالح", "error");
+                    }
+                } catch(err) {
+                    showToast("خطأ في قراءة الملف", "error");
+                }
+            };
+            fileReader.readAsText(event.target.files[0]);
         }
 
         function saveSettings() {
@@ -949,12 +950,14 @@
         }
 
         function resetDataToDefault() {
-            state.trades = [];
-            state.initialBalance = 1000;
-            saveState();
-            renderDashboard();
-            renderJournal();
-            showToast("تم حذف جميع السجلات!", "info");
+            if (confirm("هل أنت تأكد من رغبتك في مسح كافة السجلات؟")) {
+                state.trades = [];
+                state.initialBalance = DEFAULT_INITIAL_BALANCE;
+                saveState();
+                renderDashboard();
+                renderJournal();
+                showToast("تم إعادة الضبط وحذف السجلات!", "info");
+            }
         }
 
         function downloadSelfHtml() {
