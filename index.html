@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة تحدي الـ 50 صفقة والتداول الحلال</title>
-    
-    <!-- Tailwind CSS CDN -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -28,17 +27,16 @@
             }
         }
     </script>
-    
-    <!-- Google Fonts Cairo -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- TradingView Widget Script -->
+
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         body {
@@ -77,7 +75,6 @@
 </head>
 <body class="min-h-screen flex flex-col bg-darkbg text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
 
-    <!-- Top Navigation Header -->
     <header class="border-b border-cardborder bg-cardbg sticky top-0 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -92,7 +89,6 @@
                 </div>
             </div>
 
-            <!-- Quick Info & Download Button -->
             <div class="flex items-center gap-3">
                 <button onclick="downloadSelfHtml()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md shadow-emerald-900/30 active:scale-95">
                     <i class="fa-solid fa-download text-sm"></i>
@@ -102,7 +98,6 @@
         </div>
     </header>
 
-    <!-- Sub-Header Navigation Tabs -->
     <div class="bg-cardbg/80 border-b border-cardborder sticky top-16 z-40 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 overflow-x-auto py-2 scrollbar-none">
             <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-bold border border-transparent hover:border-slate-700 transition flex items-center gap-2 whitespace-nowrap active">
@@ -123,10 +118,8 @@
         </div>
     </div>
 
-    <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
 
-        <!-- TAB 1: DASHBOARD -->
         <section id="view-dashboard" class="space-y-6">
             <div class="glass-card rounded-2xl p-5 border border-cardborder relative overflow-hidden">
                 <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -188,6 +181,16 @@
             </div>
 
             <div class="glass-card rounded-2xl p-5 border border-cardborder">
+                <h3 class="font-extrabold text-base text-white mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-area text-emerald-400"></i>
+                    منحنى نمو الرصيد (Equity Curve)
+                </h3>
+                <div class="h-60 w-full relative">
+                    <canvas id="equityChart"></canvas>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 border border-cardborder">
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="font-extrabold text-base text-white flex items-center gap-2">
                         <i class="fa-solid fa-clock-rotate-left text-blue-400"></i>
@@ -205,6 +208,7 @@
                                 <th class="p-3 font-bold">النوع</th>
                                 <th class="p-3 font-bold">الدخول / الخروج</th>
                                 <th class="p-3 font-bold">الحالة الشرعية</th>
+                                <th class="p-3 font-bold">النفسية</th>
                                 <th class="p-3 font-bold">الربح / الخسارة</th>
                                 <th class="p-3 font-bold">النتيجة</th>
                             </tr>
@@ -216,7 +220,6 @@
             </div>
         </section>
 
-        <!-- TAB 2: ZOYA HALAL SCREENER -->
         <section id="view-zoya" class="space-y-6 hidden">
             <div class="glass-card p-6 rounded-2xl border border-cardborder bg-gradient-to-r from-emerald-950/40 via-cardbg to-darkbg">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -260,10 +263,8 @@
             </div>
         </section>
 
-        <!-- TAB 3: RISK CALCULATOR & CHART -->
         <section id="view-calc" class="space-y-6 hidden">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <!-- Calculator Side -->
                 <div class="lg:col-span-5 glass-card p-5 rounded-2xl border border-cardborder space-y-4">
                     <div class="flex items-center justify-between border-b border-cardborder pb-3">
                         <h3 class="font-extrabold text-base text-white flex items-center gap-2">
@@ -273,9 +274,19 @@
                     </div>
 
                     <form id="calc-form" oninput="calculateRisk()" class="space-y-3">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-300 mb-1">الرمز / السهم</label>
-                            <input type="text" id="calc-ticker" value="AAPL" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white uppercase font-bold focus:border-blue-500 focus:outline-none" onchange="updateChartSymbol(this.value)">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 mb-1">الرمز / السهم</label>
+                                <input type="text" id="calc-ticker" value="AAPL" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white uppercase font-bold focus:border-blue-500 focus:outline-none" onchange="updateChartSymbol(this.value)">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 mb-1">سوق التداول</label>
+                                <select id="calc-asset-type" onchange="calculateRisk()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white font-bold focus:outline-none">
+                                    <option value="STOCKS">أسهم (Shares)</option>
+                                    <option value="CRYPTO">عملات رقمية (Spot)</option>
+                                    <option value="FOREX">فوركس (Lots)</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-3">
@@ -306,14 +317,13 @@
                         </div>
                     </form>
 
-                    <!-- Calculation Results -->
                     <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 space-y-2 text-xs">
                         <div class="flex justify-between items-center text-slate-300">
                             <span>مبلغ المخاطرة:</span>
                             <span id="res-risk-amount" class="font-bold text-rose-400">$10.00</span>
                         </div>
                         <div class="flex justify-between items-center text-slate-300">
-                            <span>حجم الكمية (أسهم):</span>
+                            <span>حجم الكمية / اللوت:</span>
                             <span id="res-position-size" class="font-extrabold text-blue-400">2.00</span>
                         </div>
                         <div class="flex justify-between items-center text-slate-300">
@@ -321,17 +331,16 @@
                             <span id="res-total-value" class="font-bold text-white">$300.00</span>
                         </div>
                         <div class="flex justify-between items-center text-slate-300">
-                            <span>العائد للمخاطرة:</span>
+                            <span>العائد للمخاطرة (R:R):</span>
                             <span id="res-rr-ratio" class="font-bold text-emerald-400">1 : 2.00</span>
                         </div>
                     </div>
 
                     <button onclick="transferCalcToModal()" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-md">
-                        <i class="fa-solid fa-plus-circle"></i> تسجيل في السجل
+                        <i class="fa-solid fa-plus-circle"></i> تسجيل الصفقة في السجل
                     </button>
                 </div>
 
-                <!-- Live TradingView Chart Side -->
                 <div class="lg:col-span-7 glass-card p-4 rounded-2xl border border-cardborder flex flex-col h-[520px]">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="font-extrabold text-base text-white flex items-center gap-2">
@@ -340,18 +349,16 @@
                         </h3>
                         <span id="chart-symbol-badge" class="px-2.5 py-1 rounded bg-slate-800 text-xs font-extrabold text-emerald-400">NASDAQ:AAPL</span>
                     </div>
-                    <!-- TradingView Widget -->
                     <div id="tradingview_widget_container" class="w-full flex-1 rounded-xl overflow-hidden border border-slate-800"></div>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 4: TRADE JOURNAL -->
         <section id="view-journal" class="space-y-6 hidden">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <h2 class="text-xl font-extrabold text-white">سجل الصفقات (50 Trade Journal)</h2>
-                    <p class="text-xs text-slate-400 mt-1">وثّق جميع صفقاتك بانتظام لتقييم أدائك.</p>
+                    <p class="text-xs text-slate-400 mt-1">وثّق جميع صفقاتك بانتظام لتقييم أدائك والسلوك النفسي.</p>
                 </div>
                 <div class="flex items-center gap-2">
                     <button onclick="openAddTradeModal()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs sm:text-sm flex items-center gap-2 transition shadow-md">
@@ -376,11 +383,12 @@
                             <tr>
                                 <th class="p-3.5 font-bold">#</th>
                                 <th class="p-3.5 font-bold">التاريخ والرمز</th>
-                                <th class="p-3.5 font-bold">النوع</th>
-                                <th class="p-3.5 font-bold">الدخول</th>
-                                <th class="p-3.5 font-bold">الخروج</th>
+                                <th class="p-3.5 font-bold">النوع والنمط</th>
+                                <th class="p-3.5 font-bold">الدخول / الخروج</th>
+                                <th class="p-3.5 font-bold">النفسية</th>
                                 <th class="p-3.5 font-bold">الربح/الخسارة</th>
                                 <th class="p-3.5 font-bold">الحالة</th>
+                                <th class="p-3.5 font-bold">الشارت</th>
                                 <th class="p-3.5 font-bold">إجراءات</th>
                             </tr>
                         </thead>
@@ -391,7 +399,6 @@
             </div>
         </section>
 
-        <!-- TAB 5: SETTINGS -->
         <section id="view-settings" class="hidden space-y-6">
             <div class="glass-card p-6 rounded-2xl border border-cardborder max-w-2xl mx-auto space-y-6">
                 <h2 class="text-xl font-extrabold text-white border-b border-cardborder pb-3">الإعدادات وإدارة البيانات</h2>
@@ -426,7 +433,6 @@
 
     </main>
 
-    <!-- Modal: Add/Edit Trade -->
     <div id="modal-trade" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="glass-card bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-lg p-6 space-y-4 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -435,6 +441,7 @@
             </div>
             <form id="modal-trade-form" onsubmit="saveTradeFromModal(event)" class="space-y-3">
                 <input type="hidden" id="m-editing-id" value="">
+                
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-300 mb-1">الرمز</label>
@@ -445,9 +452,11 @@
                         <select id="m-type" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white font-bold">
                             <option value="SPOT">Spot</option>
                             <option value="STOCKS">أسهم</option>
+                            <option value="FOREX">فوركس</option>
                         </select>
                     </div>
                 </div>
+
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-300 mb-1">الدخول ($)</label>
@@ -458,6 +467,7 @@
                         <input type="number" id="m-exit" step="any" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white font-bold">
                     </div>
                 </div>
+
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-300 mb-1">الكمية</label>
@@ -472,6 +482,28 @@
                         </select>
                     </div>
                 </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1">الحالة النفسية</label>
+                        <select id="m-psychology" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-amber-300 font-bold">
+                            <option value="🎯 منضبط">🎯 منضبط</option>
+                            <option value="😨 خائف">😨 خائف</option>
+                            <option value="⚡ متسرع">⚡ متسرع</option>
+                            <option value="🤑 طامع">🤑 طامع</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1">الإستراتيجية</label>
+                        <input type="text" id="m-strategy" placeholder="مثال: اختراق دعم/مقاومة" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white font-bold">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1">رابط لقطة الشارت (Image URL)</label>
+                    <input type="url" id="m-chart-url" placeholder="https://www.tradingview.com/x/..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white font-bold">
+                </div>
+
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-300 mb-1">الحالة الشرعية</label>
@@ -485,15 +517,27 @@
                         <input type="number" id="m-purification-rate" step="0.01" value="0.0" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white font-bold">
                     </div>
                 </div>
+
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                    <span class="text-xs font-extrabold text-blue-400 block"><i class="fa-solid fa-list-check"></i> قائمة التأكد قبل الحفظ (Pre-Trade Checklist):</span>
+                    <label class="flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
+                        <input type="checkbox" id="chk-halal" required="" class="rounded bg-slate-900 border-slate-700 text-blue-600 focus:ring-0">
+                        <span>السهم متوافق مع الضوابط الشرعية</span>
+                    </label>
+                    <label class="flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
+                        <input type="checkbox" id="chk-risk" required="" class="rounded bg-slate-900 border-slate-700 text-blue-600 focus:ring-0">
+                        <span>نسبة المخاطرة مقبولة (أقل من 2% من الحساب)</span>
+                    </label>
+                </div>
+
                 <div class="pt-2 flex gap-2">
-                    <button type="submit" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition">حفظ</button>
+                    <button type="submit" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition">حفظ الصفقة</button>
                     <button type="button" onclick="closeTradeModal()" class="px-5 py-3 bg-slate-800 text-slate-300 font-bold rounded-xl">إلغاء</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Toast -->
     <div id="toast-container" class="fixed bottom-5 left-5 z-50 space-y-2 pointer-events-none"></div>
 
     <script>
@@ -503,6 +547,8 @@
             initialBalance: DEFAULT_INITIAL_BALANCE,
             currentFilter: 'ALL'
         };
+
+        let equityChartInstance = null;
 
         const ZOYA_DATABASE = {
             "AAPL": { compliance: "COMPLIANT", debtRatio: 18.4, impuritiesRatio: 1.2, purificationRate: 0.15 },
@@ -718,6 +764,62 @@
             document.getElementById('m-quantity').value = parseFloat(document.getElementById('res-position-size').innerText).toFixed(2);
         }
 
+        // ---------- Equity Curve Chart Render ----------
+        function renderEquityChart() {
+            const ctx = document.getElementById('equityChart');
+            if (!ctx) return;
+
+            let runningBalance = state.initialBalance;
+            const labels = ['البداية'];
+            const dataPoints = [state.initialBalance];
+
+            const completedTrades = state.trades.filter(t => t.status !== 'PENDING');
+            completedTrades.forEach((t, index) => {
+                runningBalance += (t.pnl || 0);
+                labels.push(`#${t.id || index + 1}`);
+                dataPoints.push(runningBalance);
+            });
+
+            if (equityChartInstance) {
+                equityChartInstance.destroy();
+            }
+
+            equityChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'الرصيد ($)',
+                        data: dataPoints,
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#3b82f6',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#94a3b8', font: { family: 'Cairo' } },
+                            grid: { color: 'rgba(42, 46, 57, 0.5)' }
+                        },
+                        y: {
+                            ticks: { color: '#94a3b8', font: { family: 'Cairo' } },
+                            grid: { color: 'rgba(42, 46, 57, 0.5)' }
+                        }
+                    }
+                }
+            });
+        }
+
         function renderDashboard() {
             const completedTrades = state.trades.filter(t => t.status !== 'PENDING');
             const winTrades = completedTrades.filter(t => t.status === 'WIN');
@@ -753,11 +855,14 @@
                     <td class="p-3 text-slate-400 font-semibold">${t.type}</td>
                     <td class="p-3 text-slate-300 font-mono">${t.entryPrice} / ${t.exitPrice || '-'}</td>
                     <td class="p-3">${t.halalStatus === 'COMPLIANT' ? '🟢' : '🟡'}</td>
+                    <td class="p-3 text-xs font-bold text-amber-300">${t.psychology || '🎯 منضبط'}</td>
                     <td class="p-3 ${t.pnl >= 0 ? 'text-emerald-400' : 'text-rose-400'} font-bold">${t.pnl ? (t.pnl > 0 ? '+' : '') + '$' + t.pnl.toFixed(2) : '-'}</td>
                     <td class="p-3">${t.status === 'WIN' ? '🎯' : (t.status === 'LOSS' ? '🔻' : '⏳')}</td>
                 `;
                 tbody.appendChild(tr);
             });
+
+            renderEquityChart();
         }
 
         function filterTrades(status) {
@@ -779,12 +884,15 @@
                 tr.className = 'border-b border-cardborder';
                 tr.innerHTML = `
                     <td class="p-3 font-bold text-slate-400">${t.id}</td>
-                    <td class="p-3 font-extrabold text-white">${t.ticker}</td>
-                    <td class="p-3 text-xs text-slate-300">${t.type}</td>
-                    <td class="p-3 font-mono text-slate-200">$${t.entryPrice}</td>
-                    <td class="p-3 font-mono text-slate-200">${t.exitPrice ? '$'+t.exitPrice : '-'}</td>
+                    <td class="p-3 font-extrabold text-white">${t.ticker} <span class="block text-[10px] text-slate-500 font-normal">${t.date || ''}</span></td>
+                    <td class="p-3 text-xs text-slate-300">${t.type} <span class="block text-[10px] text-blue-400">${t.strategy || ''}</span></td>
+                    <td class="p-3 font-mono text-slate-200">$${t.entryPrice} / ${t.exitPrice ? '$'+t.exitPrice : '-'}</td>
+                    <td class="p-3 text-xs font-bold text-amber-300">${t.psychology || '🎯 منضبط'}</td>
                     <td class="p-3 ${t.pnl >= 0 ? 'text-emerald-400' : 'text-rose-400'} font-bold">${t.pnl ? (t.pnl > 0 ? '+' : '') + '$' + t.pnl.toFixed(2) : '-'}</td>
                     <td class="p-3">${t.status === 'WIN' ? '🎯' : (t.status === 'LOSS' ? '🔻' : '⏳')}</td>
+                    <td class="p-3">
+                        ${t.chartUrl ? `<a href="${t.chartUrl}" target="_blank" class="text-blue-400 hover:text-blue-300 text-xs font-bold flex items-center gap-1"><i class="fa-solid fa-arrow-up-right-from-square"></i> عرض</a>` : '-'}
+                    </td>
                     <td class="p-3 flex items-center gap-2">
                         <button onclick="editTrade(${t.id})" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-pen-to-square"></i></button>
                         <button onclick="deleteTrade(${t.id})" class="text-rose-400 hover:text-rose-300"><i class="fa-solid fa-trash"></i></button>
@@ -812,9 +920,15 @@
             document.getElementById('m-exit').value = trade.exitPrice || '';
             document.getElementById('m-quantity').value = trade.quantity;
             document.getElementById('m-status').value = trade.status;
+            document.getElementById('m-psychology').value = trade.psychology || '🎯 منضبط';
+            document.getElementById('m-strategy').value = trade.strategy || '';
+            document.getElementById('m-chart-url').value = trade.chartUrl || '';
             document.getElementById('m-halal').value = trade.halalStatus;
             document.getElementById('m-purification-rate').value = trade.purificationRate || 0;
             
+            document.getElementById('chk-halal').checked = true;
+            document.getElementById('chk-risk').checked = true;
+
             document.getElementById('modal-title').innerText = `تعديل الصفقة #${trade.id}`;
             document.getElementById('modal-trade').classList.remove('hidden');
         }
@@ -836,37 +950,32 @@
             let pnl = exit ? (exit - entry) * quantity : 0;
             let purAmount = (pnl > 0 && purRate > 0) ? pnl * (purRate / 100) : 0;
 
+            const tradeData = {
+                ticker,
+                type: document.getElementById('m-type').value,
+                entryPrice: entry,
+                exitPrice: exit,
+                quantity,
+                pnl,
+                status,
+                psychology: document.getElementById('m-psychology').value,
+                strategy: document.getElementById('m-strategy').value,
+                chartUrl: document.getElementById('m-chart-url').value,
+                halalStatus: document.getElementById('m-halal').value,
+                purificationRate: purRate,
+                purificationAmount: purAmount
+            };
+
             if (editingId) {
                 const index = state.trades.findIndex(t => t.id === parseInt(editingId));
                 if (index !== -1) {
-                    state.trades[index] = {
-                        ...state.trades[index],
-                        ticker,
-                        type: document.getElementById('m-type').value,
-                        entryPrice: entry,
-                        exitPrice: exit,
-                        quantity,
-                        pnl,
-                        status,
-                        halalStatus: document.getElementById('m-halal').value,
-                        purificationRate: purRate,
-                        purificationAmount: purAmount
-                    };
+                    state.trades[index] = { ...state.trades[index], ...tradeData };
                 }
             } else {
                 const nextId = state.trades.length > 0 ? Math.max(...state.trades.map(t => t.id || 0)) + 1 : 1;
                 state.trades.push({
                     id: nextId,
-                    ticker,
-                    type: document.getElementById('m-type').value,
-                    entryPrice: entry,
-                    exitPrice: exit,
-                    quantity,
-                    pnl,
-                    status,
-                    halalStatus: document.getElementById('m-halal').value,
-                    purificationRate: purRate,
-                    purificationAmount: purAmount,
+                    ...tradeData,
                     date: new Date().toISOString().split('T')[0]
                 });
             }
@@ -875,7 +984,7 @@
             renderDashboard();
             renderJournal();
             closeTradeModal();
-            showToast(editingId ? "تم تحديث الصفقة!" : "تم التسجيل بنجاح!", "success");
+            showToast(editingId ? "تم تحديث الصفقة بنجاح!" : "تم تسجيل الصفقة بنجاح!", "success");
         }
 
         function deleteTrade(id) {
@@ -892,9 +1001,9 @@
                 showToast("لا توجد صفقات للتصدير", "error");
                 return;
             }
-            const headers = ["ID", "Ticker", "Type", "Entry", "Exit", "Quantity", "PnL", "Status", "HalalStatus", "PurificationRate", "PurificationAmount", "Date"];
+            const headers = ["ID", "Ticker", "Type", "Entry", "Exit", "Quantity", "PnL", "Status", "Psychology", "Strategy", "HalalStatus", "PurificationAmount", "Date"];
             const rows = state.trades.map(t => [
-                t.id, t.ticker, t.type, t.entryPrice, t.exitPrice || '', t.quantity, (t.pnl || 0).toFixed(2), t.status, t.halalStatus, t.purificationRate || 0, (t.purificationAmount || 0).toFixed(2), t.date || ''
+                t.id, t.ticker, t.type, t.entryPrice, t.exitPrice || '', t.quantity, (t.pnl || 0).toFixed(2), t.status, t.psychology || '', t.strategy || '', t.halalStatus, (t.purificationAmount || 0).toFixed(2), t.date || ''
             ]);
             
             const csvContent = "\uFEFF" + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
